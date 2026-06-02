@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ecomapa — Pessoa Idosa | Profa. Dra. Angelina Monteiro Furtado</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#f5f4f0;color:#1a1a18;padding:16px;max-width:1100px;margin:0 auto}
+h2{font-size:20px;font-weight:600;margin-bottom:2px}
+p.sub{font-size:13px;color:#5a5957;margin-bottom:14px}
+.autoria{background:#7c3aed;border-radius:8px;padding:8px 14px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px}
+.autoria span:first-child{font-size:13px;color:#fff;font-weight:600}
+.autoria span:last-child{font-size:12px;color:#e9d5ff;font-style:italic}
+.tabs{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap}
+.tab{padding:7px 14px;font-size:12px;border:1px solid #d4d2c8;border-radius:6px;cursor:pointer;background:#fff;color:#5a5957;transition:all .15s}
+.tab.active{background:#ede9fe;color:#1a1a18;border-color:#7c3aed;font-weight:600}
+.section{display:none}.section.active{display:block}
+label{font-size:13px;color:#5a5957;display:block;margin-bottom:4px;margin-top:10px}
+input[type=text],select,textarea{width:100%;font-size:13px;padding:8px 10px;border-radius:6px;border:1px solid #d4d2c8;background:#fff;color:#1a1a18;outline:none}
+input[type=text]:focus,select:focus,textarea:focus{border-color:#7c3aed}
+textarea{resize:vertical;min-height:56px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:600px){.grid2{grid-template-columns:1fr}}
+.card{background:#fff;border:1px solid #e8e6de;border-radius:10px;padding:14px;margin-bottom:10px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.card-header{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.dot{width:11px;height:11px;border-radius:50%;flex-shrink:0}
+.card-title{font-size:14px;font-weight:600}
+.rel-row{display:flex;align-items:center;gap:6px;margin-bottom:6px;flex-wrap:wrap}
+.rel-row select{flex:1;min-width:110px;font-size:12px;padding:4px 6px}
+.rel-row input{flex:2;min-width:130px;font-size:12px;padding:4px 7px}
+.rel-row button{font-size:11px;padding:3px 8px;border-radius:5px;border:1px solid #d4d2c8;background:#fff;cursor:pointer;color:#888}
+.rel-row button:hover{background:#fff0f0;border-color:#c62828;color:#c62828}
+.btn{padding:8px 18px;font-size:13px;border-radius:6px;border:1px solid #d4d2c8;background:#fff;cursor:pointer;color:#1a1a18;font-weight:500;transition:all .15s}
+.btn:hover{background:#f0eeff;border-color:#7c3aed}
+.btn-primary{background:#7c3aed;color:#fff;border-color:#7c3aed}
+.btn-primary:hover{background:#6d28d9}
+.actions{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+.alert-box{border-radius:8px;padding:10px 14px;font-size:13px;margin-top:10px;border:1px solid}
+.alert-alto{background:#fff5f5;border-color:#c62828;color:#7f1d1d}
+.alert-medio{background:#fffbeb;border-color:#d97706;color:#78350f}
+.alert-baixo{background:#f0fdf4;border-color:#16a34a;color:#14532d}
+#canvas-wrap{width:100%;overflow-x:auto;border:1px solid #e8e6de;border-radius:10px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+canvas{display:block}
+.ivcf-row{display:flex;align-items:center;justify-content:space-between;padding:6px 0;border-bottom:1px solid #f0ede6;font-size:13px}
+.ivcf-row:last-child{border-bottom:none}
+.ivcf-opts{display:flex;gap:12px}
+.ivcf-opts label{margin:0;color:#1a1a18;display:flex;align-items:center;gap:4px;font-size:13px;cursor:pointer}
+.score-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:14px}
+.score-card{background:#fff;border:1px solid #e8e6de;border-radius:8px;padding:12px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.score-label{font-size:11px;color:#5a5957;margin-bottom:4px}
+.score-val{font-size:22px;font-weight:600}
+.intro-box{background:#fff;border-radius:10px;border:1px solid #e8e6de;padding:16px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+@media print{.tabs,.actions,.autoria,p.sub,h2,.intro-box{display:none!important}.section{display:block!important}}
+</style>
+</head>
+<body>
+
+<div class="autoria">
+  <span>© Profa. Dra. Angelina Monteiro Furtado</span>
+  <span>Reprodução ou modificação não autorizada é proibida.</span>
+</div>
+
+<h2>Ecomapa — Pessoa Idosa</h2>
+<p class="sub">Mapeamento integrado de redes de suporte, funcionalidade e vulnerabilidade</p>
+
+<div class="intro-box">
+  <p style="font-size:14px;font-weight:600;margin-bottom:8px;color:#1a1a18">Sobre esta ferramenta</p>
+  <p style="font-size:13px;color:#5a5957;line-height:1.7;margin-bottom:10px">O <strong style="color:#1a1a18">Ecomapa</strong> é um instrumento gráfico utilizado por profissionais de saúde, serviço social, terapia ocupacional e gerontologia para mapear as redes de apoio de uma pessoa e a qualidade de suas relações com o meio social. Criado por Ann Hartman (1978) e amplamente adotado na atenção à pessoa idosa, ele permite visualizar, de forma clara e objetiva, os vínculos familiares, comunitários e institucionais — suas forças, fragilidades e rupturas.</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-bottom:12px">
+    <div style="display:flex;gap:8px;align-items:flex-start"><span style="font-size:18px">👤</span><span style="font-size:12px;color:#5a5957;line-height:1.5"><strong style="color:#1a1a18">Identificação</strong><br>Dados sociodemográficos, condições de saúde, moradia e renda.</span></div>
+    <div style="display:flex;gap:8px;align-items:flex-start"><span style="font-size:18px">🩺</span><span style="font-size:12px;color:#5a5957;line-height:1.5"><strong style="color:#1a1a18">Funcionalidade (IVCF-20)</strong><br>Vulnerabilidade clínico-funcional: mobilidade, cognição, humor e autonomia.</span></div>
+    <div style="display:flex;gap:8px;align-items:flex-start"><span style="font-size:18px">🌐</span><span style="font-size:12px;color:#5a5957;line-height:1.5"><strong style="color:#1a1a18">Redes de suporte</strong><br>Vínculos com família, saúde, serviços, religião, lazer, cuidadores e pet.</span></div>
+    <div style="display:flex;gap:8px;align-items:flex-start"><span style="font-size:18px">⚠️</span><span style="font-size:12px;color:#5a5957;line-height:1.5"><strong style="color:#1a1a18">Risco e violência</strong><br>Negligência, violência, isolamento e sobrecarga do cuidador.</span></div>
+    <div style="display:flex;gap:8px;align-items:flex-start"><span style="font-size:18px">🗺️</span><span style="font-size:12px;color:#5a5957;line-height:1.5"><strong style="color:#1a1a18">Mapa visual</strong><br>Ecomapa gráfico com painel de dados completo, exportável para prontuário.</span></div>
+  </div>
+  <div style="border-top:1px solid #e8e6de;padding-top:10px;margin-top:4px">
+    <p style="font-size:11px;font-weight:600;color:#5a5957;margin-bottom:6px">Referências (ABNT)</p>
+    <p style="font-size:11px;color:#5a5957;line-height:1.8">
+      DOMINGUES, M. A. R. da C. <strong>Mapa mínimo de relações: adaptação de um instrumento gráfico para a configuração da rede de suporte social do idoso.</strong> 2000. Dissertação (Mestrado) — FSP/USP, São Paulo, 2000.<br>
+      DOMINGUES, M. A. R. da C. <strong>Mapa mínimo de relações: instrumento gráfico para identificar a rede de suporte social do idoso.</strong> 2004. Tese (Doutorado) — USP, São Paulo. Disponível em: https://doi.org/10.11606/T.6.2004.tde-09032021-184132<br>
+      HARTMAN, Ann. Diagrammatic assessment of family relationships. <strong>Social Casework,</strong> Chicago, v. 59, n. 8, p. 465-476, out. 1978.<br>
+      MORAES, E. N. <strong>Atenção à saúde do idoso: aspectos conceituais.</strong> Brasília: OPAS, 2012. (IVCF-20, validado em 2014.)<br>
+      WRIGHT, L. M.; LEAHEY, M. <strong>Enfermeiras e famílias: um guia para avaliação e intervenção na família.</strong> 5. ed. São Paulo: Roca, 2012. (Modelo Calgary de Avaliação Familiar.)
+    </p>
+    <p style="font-size:11px;color:#888;margin-top:8px;font-style:italic">Instrumento de apoio à prática profissional — não substitui avaliação clínica especializada.</p>
+    <div style="margin-top:10px;padding-top:8px;border-top:1px solid #e8e6de;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px">
+      <div><p style="font-size:12px;font-weight:600;color:#1a1a18">Profa. Dra. Angelina Monteiro Furtado</p><p style="font-size:11px;color:#5a5957">Autora e proprietária desta ferramenta</p></div>
+      <p style="font-size:11px;color:#888;font-style:italic;align-self:flex-end">Ferramenta criada com auxílio de inteligência artificial</p>
+    </div>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="showTab('dados')">1. Identificação</button>
+  <button class="tab" onclick="showTab('ivcf')">2. Funcionalidade</button>
+  <button class="tab" onclick="showTab('sistemas')">3. Redes de suporte</button>
+  <button class="tab" onclick="showTab('risco')">4. Risco / Violência</button>
+  <button class="tab" onclick="showTab('mapa')">5. Ecomapa</button>
+</div>
+
+<!-- 1. IDENTIFICAÇÃO -->
+<div id="sec-dados" class="section active">
+  <div class="card">
+    <div class="card-header"><div class="dot" style="background:#5c6bc0"></div><span class="card-title">Dados pessoais</span></div>
+    <div class="grid2">
+      <div><label>Nome completo</label><input type="text" id="nome" placeholder="Ex.: Maria da Silva"></div>
+      <div><label>Data de nascimento / Idade</label><input type="text" id="idade" placeholder="Ex.: 74 anos / 10/03/1950"></div>
+      <div><label>Sexo</label><select id="sexo"><option value="">Selecione</option><option>Feminino</option><option>Masculino</option><option>Outro</option></select></div>
+      <div><label>Estado civil</label><select id="estado_civil"><option value="">Selecione</option><option>Solteiro(a)</option><option>Casado(a)/União estável</option><option>Viúvo(a)</option><option>Divorciado(a)/Separado(a)</option></select></div>
+      <div><label>Situação de moradia</label><select id="moradia"><option value="">Selecione</option><option>Mora sozinho(a)</option><option>Com cônjuge/parceiro(a)</option><option>Com filhos</option><option>Com outros familiares</option><option>ILPI</option><option>República / moradia compartilhada</option></select></div>
+      <div><label>Município / UF</label><input type="text" id="municipio" placeholder="Ex.: Floriano / PI"></div>
+      <div><label>Escolaridade</label><select id="escolaridade"><option value="">Selecione</option><option>Sem escolaridade</option><option>Fundamental incompleto</option><option>Fundamental completo</option><option>Médio</option><option>Superior</option></select></div>
+      <div><label>Renda principal</label><select id="renda"><option value="">Selecione</option><option>Aposentadoria/Pensão</option><option>BPC / LOAS</option><option>Trabalho remunerado</option><option>Dependente de familiar</option><option>Sem renda</option></select></div>
+    </div>
+    <label>Diagnósticos / condições de saúde relevantes</label>
+    <textarea id="diagnosticos" placeholder="Ex.: HAS, DM tipo 2, demência leve..."></textarea>
+    <label>Profissional responsável / Serviço</label>
+    <div class="grid2">
+      <input type="text" id="profissional" placeholder="Nome do profissional">
+      <input type="text" id="servico" placeholder="Ex.: CRAS, UBS, CRASPI...">
+    </div>
+  </div>
+  <div class="actions"><button class="btn btn-primary" onclick="showTab('ivcf')">Próximo →</button></div>
+</div>
+
+<!-- 2. FUNCIONALIDADE -->
+<div id="sec-ivcf" class="section">
+  <div class="card">
+    <div class="card-header"><div class="dot" style="background:#0891b2"></div><span class="card-title">Avaliação de funcionalidade — IVCF-20 simplificado</span></div>
+    <p style="font-size:12px;color:#5a5957;margin-bottom:12px">Baseado no Índice de Vulnerabilidade Clínico-Funcional (Moraes, 2014). Marque <strong>SIM</strong> para as condições presentes.</p>
+    <div id="ivcf-items"></div>
+    <div style="margin-top:14px;padding:12px;background:#f7f6f2;border-radius:8px">
+      Pontuação IVCF: <span id="ivcf-score" style="font-size:18px;font-weight:700">0</span> pts &nbsp;|&nbsp;
+      <span id="ivcf-class" style="font-size:14px;font-weight:600"></span>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="btn" onclick="showTab('dados')">← Voltar</button>
+    <button class="btn btn-primary" onclick="showTab('sistemas')">Próximo →</button>
+  </div>
+</div>
+
+<!-- 3. SISTEMAS -->
+<div id="sec-sistemas" class="section">
+  <p style="font-size:13px;color:#5a5957;margin-bottom:12px">Para cada sistema, adicione os vínculos e a qualidade da relação com a pessoa idosa.</p>
+  <div id="sistemas-cards"></div>
+  <div class="actions">
+    <button class="btn" onclick="showTab('ivcf')">← Voltar</button>
+    <button class="btn btn-primary" onclick="showTab('risco')">Próximo →</button>
+  </div>
+</div>
+
+<!-- 4. RISCO -->
+<div id="sec-risco" class="section">
+  <div class="card">
+    <div class="card-header"><div class="dot" style="background:#c62828"></div><span class="card-title">Indicadores de risco e violência</span></div>
+    <p style="font-size:12px;color:#5a5957;margin-bottom:10px">Marque os indicadores presentes.</p>
+    <div id="risco-items"></div>
+    <label>Observações sobre situação de risco</label>
+    <textarea id="obs-risco" placeholder="Descreva o contexto, suspeitas ou encaminhamentos realizados..."></textarea>
+    <div id="risco-resultado" style="margin-top:10px"></div>
+  </div>
+  <div class="card">
+    <div class="card-header"><div class="dot" style="background:#7c3aed"></div><span class="card-title">Plano de cuidado / Encaminhamentos</span></div>
+    <textarea id="plano" placeholder="Registre os encaminhamentos, intervenções planejadas e próximos passos..."></textarea>
+  </div>
+  <div class="actions">
+    <button class="btn" onclick="showTab('sistemas')">← Voltar</button>
+    <button class="btn btn-primary" onclick="showTab('mapa')">Gerar mapa →</button>
+  </div>
+</div>
+
+<!-- 5. MAPA -->
+<div id="sec-mapa" class="section">
+  <div class="score-grid" id="score-resumo"></div>
+  <div id="canvas-wrap"><canvas id="eco-canvas"></canvas></div>
+  <div class="actions">
+    <button class="btn" onclick="showTab('risco')">← Editar</button>
+    <button class="btn btn-primary" onclick="doDownloadPNG()">⬇️ Baixar PNG</button>
+    <button class="btn" onclick="doImprimir()">🖨️ Imprimir</button>
+  </div>
+</div>
+
+<script>
+// ═══ CONSTANTES ═══════════════════════════════
+const SISTEMAS=[
+  {id:'familia',     label:'Família',                    cor:'#e53935',emoji:'👨‍👩‍👧'},
+  {id:'saude',       label:'Saúde',                      cor:'#1e88e5',emoji:'🏥'},
+  {id:'religiao',    label:'Religião / Espiritualidade',  cor:'#8e24aa',emoji:'⛪'},
+  {id:'amigos',      label:'Amigos / Vizinhos',           cor:'#fb8c00',emoji:'🤝'},
+  {id:'servicos',    label:'Serviços Sociais',            cor:'#00897b',emoji:'🏛️'},
+  {id:'lazer',       label:'Lazer / Cultura',             cor:'#f4511e',emoji:'🎭'},
+  {id:'trabalho',    label:'Trabalho / Aposentadoria',    cor:'#6d4c41',emoji:'💼'},
+  {id:'saude_mental',label:'Saúde Mental / Psicológica',  cor:'#0891b2',emoji:'🧠'},
+  {id:'cuidador',    label:'Cuidador(a)',                 cor:'#0f766e',emoji:'🩺'},
+  {id:'digital',     label:'Tecnologia / Comunicação',   cor:'#6366f1',emoji:'📱'},
+  {id:'pet',         label:'Animal de estimação',        cor:'#d97706',emoji:'🐾'},
+];
+const TIPOS      =['Forte e positiva','Fraca / distante','Estressante / conflituosa','Rompida / inexistente'];
+const TCORES     ={'Forte e positiva':'#2e7d32','Fraca / distante':'#f9a825','Estressante / conflituosa':'#c62828','Rompida / inexistente':'#9e9e9e'};
+const TDASH      ={'Forte e positiva':[],'Fraca / distante':[6,4],'Estressante / conflituosa':[2,3],'Rompida / inexistente':[4,4]};
+const TLW        ={'Forte e positiva':2.5,'Fraca / distante':1.5,'Estressante / conflituosa':1.5,'Rompida / inexistente':1};
+const TIPO_PET   =['Vínculo forte e positivo','Vínculo presente / moderado','Causa sobrecarga / dificuldade','Perdeu recentemente'];
+const PCORES     ={'Vínculo forte e positivo':'#d97706','Vínculo presente / moderado':'#f59e0b','Causa sobrecarga / dificuldade':'#c62828','Perdeu recentemente':'#9e9e9e'};
+const PDASH      ={'Vínculo forte e positivo':[],'Vínculo presente / moderado':[6,4],'Causa sobrecarga / dificuldade':[2,3],'Perdeu recentemente':[3,2,8,2]};
+const PLW        ={'Vínculo forte e positivo':2.5,'Vínculo presente / moderado':1.5,'Causa sobrecarga / dificuldade':1.5,'Perdeu recentemente':1.5};
+const PARENTESCO =['Filho(a)','Cônjuge / parceiro(a)','Genro / Nora','Neto(a)','Irmão / Irmã','Sobrinho(a)','Pai / Mãe','Avô / Avó','Tio(a)','Primo(a)','Cunhado(a)','Outro familiar'];
+const PET_TIPOS  =['Cão','Gato','Pássaro','Peixe','Outro'];
+const IVCF=[
+  {q:'Autopercepção da saúde ruim',pts:1},
+  {q:'Incontinência urinária ou fecal',pts:2},
+  {q:'Queda nos últimos 6 meses',pts:2},
+  {q:'Dificuldade para caminhar / locomover-se',pts:2},
+  {q:'Dificuldade nas atividades básicas (banho, vestir, alimentar)',pts:4},
+  {q:'Dificuldade nas atividades instrumentais (compras, finanças, transporte)',pts:4},
+  {q:'Perda de memória referida pelo idoso ou familiar',pts:3},
+  {q:'Humor deprimido / tristeza frequente',pts:2},
+  {q:'Perda de peso não intencional recente',pts:2},
+  {q:'Polifarmácia (5 ou mais medicamentos)',pts:1},
+  {q:'Internação hospitalar nos últimos 6 meses',pts:1},
+  {q:'Déficit visual não corrigido',pts:2},
+  {q:'Déficit auditivo',pts:2},
+];
+const RISCO_ITEMS=[
+  {q:'Isolamento social progressivo',peso:2},
+  {q:'Sinais de negligência (higiene, alimentação, medicamentos)',peso:3},
+  {q:'Suspeita ou relato de violência física',peso:3},
+  {q:'Suspeita ou relato de violência psicológica',peso:2},
+  {q:'Suspeita de violência financeira / patrimonial',peso:2},
+  {q:'Ausência de cuidador quando necessário',peso:2},
+  {q:'Sobrecarga do cuidador familiar',peso:1},
+  {q:'Conflitos familiares frequentes',peso:2},
+  {q:'Ameaças de institucionalização involuntária',peso:2},
+  {q:'Ausência de rede de apoio',peso:2},
+];
+
+// ═══ IVCF ═════════════════════════════════════
+function buildIVCF(){
+  document.getElementById('ivcf-items').innerHTML=IVCF.map((it,i)=>`
+    <div class="ivcf-row">
+      <span style="flex:1;padding-right:12px">${it.q} <span style="color:#9a9890;font-size:11px">(${it.pts}pt)</span></span>
+      <div class="ivcf-opts">
+        <label><input type="radio" name="ivcf${i}" value="sim" onchange="calcIVCF()"> Sim</label>
+        <label><input type="radio" name="ivcf${i}" value="nao" checked onchange="calcIVCF()"> Não</label>
+      </div>
+    </div>`).join('');
+  calcIVCF();
+}
+function calcIVCF(){
+  let pts=0;
+  IVCF.forEach((_,i)=>{const r=document.querySelector(`input[name=ivcf${i}]:checked`);if(r&&r.value==='sim')pts+=IVCF[i].pts;});
+  document.getElementById('ivcf-score').textContent=pts;
+  let cls='',cor='';
+  if(pts===0){cls='Robusto';cor='#16a34a';}
+  else if(pts<=6){cls='Em risco de fragilidade';cor='#ca8a04';}
+  else if(pts<=14){cls='Moderadamente frágil';cor='#ea580c';}
+  else{cls='Altamente vulnerável';cor='#dc2626';}
+  const el=document.getElementById('ivcf-class');
+  el.textContent=cls;el.style.color=cor;
+  return{pts,cls,cor};
+}
+
+// ═══ RISCO ════════════════════════════════════
+function buildRisco(){
+  document.getElementById('risco-items').innerHTML=RISCO_ITEMS.map((it,i)=>`
+    <div class="ivcf-row">
+      <span style="flex:1;padding-right:12px">${it.q}</span>
+      <div class="ivcf-opts"><label><input type="checkbox" name="risco${i}" onchange="calcRisco()"> Presente</label></div>
+    </div>`).join('');
+}
+function calcRisco(){
+  let pts=0;
+  RISCO_ITEMS.forEach((it,i)=>{const c=document.querySelector(`input[name=risco${i}]`);if(c&&c.checked)pts+=it.peso;});
+  let nivel='',msg='',cls='',cor='';
+  if(pts===0){nivel='Sem indicadores';msg='Nenhum indicador de risco identificado.';cls='alert-baixo';cor='#16a34a';}
+  else if(pts<=4){nivel='Risco baixo';msg='Monitorar. Fortalecer a rede de suporte.';cls='alert-medio';cor='#ca8a04';}
+  else if(pts<=9){nivel='Risco moderado';msg='Acionar equipe multidisciplinar. Registrar e planejar intervenção.';cls='alert-medio';cor='#ea580c';}
+  else{nivel='Risco alto';msg='Ação imediata. Notificar Conselho do Idoso / MP se pertinente.';cls='alert-alto';cor='#dc2626';}
+  document.getElementById('risco-resultado').innerHTML=`<div class="alert-box ${cls}"><strong>${nivel}</strong> — ${msg}</div>`;
+  return{pts,nivel,cor};
+}
+
+// ═══ SISTEMAS ════════════════════════════════
+function buildSistemas(){
+  document.getElementById('sistemas-cards').innerHTML=SISTEMAS.map(s=>`
+    <div class="card">
+      <div class="card-header"><div class="dot" style="background:${s.cor}"></div><span class="card-title">${s.emoji} ${s.label}</span></div>
+      <div id="rows-${s.id}"></div>
+      <button class="btn" style="font-size:11px;padding:3px 10px;margin-top:6px" onclick="addRow('${s.id}')">+ Adicionar vínculo</button>
+    </div>`).join('');
+  SISTEMAS.forEach(s=>addRow(s.id));
+}
+function addRow(sid){
+  const c=document.getElementById('rows-'+sid);
+  const r=document.createElement('div');r.className='rel-row';
+  if(sid==='familia'){
+    r.innerHTML=`<select><option value="">Parentesco</option>${PARENTESCO.map(p=>`<option>${p}</option>`).join('')}</select>
+      <input type="text" placeholder="Nome da pessoa">
+      <select>${TIPOS.map(t=>`<option>${t}</option>`).join('')}</select>
+      <button onclick="this.parentElement.remove()">✕</button>`;
+  }else if(sid==='pet'){
+    r.innerHTML=`<select><option value="">Tipo</option>${PET_TIPOS.map(p=>`<option>${p}</option>`).join('')}</select>
+      <input type="text" placeholder="Nome do animal">
+      <select>${TIPO_PET.map(t=>`<option>${t}</option>`).join('')}</select>
+      <button onclick="this.parentElement.remove()">✕</button>`;
+  }else{
+    r.innerHTML=`<input type="text" placeholder="Nome / instituição">
+      <select>${TIPOS.map(t=>`<option>${t}</option>`).join('')}</select>
+      <button onclick="this.parentElement.remove()">✕</button>`;
+  }
+  c.appendChild(r);
+}
+function getData(){
+  return SISTEMAS.map(s=>{
+    const rows=document.querySelectorAll('#rows-'+s.id+' .rel-row');
+    const vinculos=[];
+    rows.forEach(r=>{
+      const inputs=r.querySelectorAll('input[type=text]');
+      const selects=r.querySelectorAll('select');
+      const nome=inputs[0]?.value.trim();
+      let tipo='',parentesco='',tipoAnimal='';
+      if(s.id==='familia'){parentesco=selects[0]?.value;tipo=selects[1]?.value;}
+      else if(s.id==='pet'){tipoAnimal=selects[0]?.value;tipo=selects[1]?.value;}
+      else{tipo=selects[0]?.value;}
+      if(nome)vinculos.push({nome,tipo,parentesco,tipoAnimal});
+    });
+    return{...s,vinculos};
+  });
+}
+
+// ═══ RESUMO ═══════════════════════════════════
+function buildResumo(){
+  const ivcf=calcIVCF(),risco=calcRisco(),dados=getData();
+  const totalV=dados.reduce((a,s)=>a+s.vinculos.length,0);
+  const posV=dados.reduce((a,s)=>a+s.vinculos.filter(v=>v.tipo==='Forte e positiva'||v.tipo==='Vínculo forte e positivo').length,0);
+  document.getElementById('score-resumo').innerHTML=`
+    <div class="score-card"><div class="score-label">IVCF</div><div class="score-val" style="color:${ivcf.cor}">${ivcf.pts}</div><div style="font-size:11px;color:#5a5957">${ivcf.cls}</div></div>
+    <div class="score-card"><div class="score-label">Vínculos totais</div><div class="score-val">${totalV}</div></div>
+    <div class="score-card"><div class="score-label">Vínculos positivos</div><div class="score-val" style="color:#16a34a">${posV}</div></div>
+    <div class="score-card"><div class="score-label">Risco</div><div class="score-val" style="font-size:14px;color:${risco.cor}">${risco.nivel}</div></div>`;
+}
+
+// ═══ CANVAS ═══════════════════════════════════
+function wrapText(ctx,text,x,y,maxW,lineH){
+  if(!text)return y;
+  const words=text.split(' ');let line='';
+  for(const w of words){
+    const t=line?line+' '+w:w;
+    if(ctx.measureText(t).width>maxW&&line){ctx.fillText(line,x,y);line=w;y+=lineH;}
+    else line=t;
+  }
+  ctx.fillText(line,x,y);return y+lineH;
+}
+
+function drawCanvas(){
+  const MW=800,MH=820,PW=330,W=MW+PW,H=MH;
+  const canvas=document.getElementById('eco-canvas');
+  canvas.width=W;canvas.height=H;
+  const ctx=canvas.getContext('2d');
+  ctx.clearRect(0,0,W,H);
+
+  const bg='#ffffff',bgP='#f7f6f2',tcol='#1a1a18',scol='#5a5957',bcol='#d4d2c8',white='#ffffff';
+  ctx.fillStyle=bg;ctx.fillRect(0,0,MW,MH);
+  ctx.fillStyle=bgP;ctx.fillRect(MW,0,PW,H);
+  ctx.strokeStyle=bcol;ctx.lineWidth=0.5;ctx.setLineDash([]);
+  ctx.beginPath();ctx.moveTo(MW,0);ctx.lineTo(MW,H);ctx.stroke();
+
+  // ─ PAINEL ─
+  const px=MW+12,colW=PW-22;let py=14;
+  const secBar=(lbl,cor)=>{
+    ctx.fillStyle=cor;ctx.fillRect(px,py,colW,17);
+    ctx.fillStyle=white;ctx.font='bold 10px sans-serif';
+    ctx.textAlign='left';ctx.textBaseline='middle';
+    ctx.fillText(lbl,px+6,py+8);py+=21;
+  };
+  const dataRow=(lbl,val)=>{
+    if(!val)return;
+    ctx.font='9px sans-serif';ctx.fillStyle=scol;ctx.textBaseline='top';ctx.textAlign='left';
+    ctx.fillText(lbl+':',px,py);
+    ctx.fillStyle=tcol;ctx.font='bold 9px sans-serif';
+    const v=String(val);ctx.fillText(v.length>30?v.substring(0,29)+'…':v,px+75,py);py+=13;
+  };
+
+  const ivcf=calcIVCF(),risco=calcRisco(),dados=getData();
+  const totalV=dados.reduce((a,s)=>a+s.vinculos.length,0);
+  const posV=dados.reduce((a,s)=>a+s.vinculos.filter(v=>v.tipo==='Forte e positiva'||v.tipo==='Vínculo forte e positivo').length,0);
+
+  secBar('1. Identificação','#5c6bc0');
+  dataRow('Nome',document.getElementById('nome').value);
+  dataRow('Idade',document.getElementById('idade').value);
+  dataRow('Sexo',document.getElementById('sexo').value);
+  dataRow('Estado civil',document.getElementById('estado_civil').value);
+  dataRow('Moradia',document.getElementById('moradia').value);
+  dataRow('Município',document.getElementById('municipio').value);
+  dataRow('Escolaridade',document.getElementById('escolaridade').value);
+  dataRow('Renda',document.getElementById('renda').value);
+  const diag=document.getElementById('diagnosticos').value;
+  if(diag){ctx.font='9px sans-serif';ctx.fillStyle=scol;ctx.textBaseline='top';ctx.fillText('Diagnósticos:',px,py);py+=12;ctx.fillStyle=tcol;py=wrapText(ctx,diag,px,py,colW,12);}
+  const prof=document.getElementById('profissional').value,serv=document.getElementById('servico').value;
+  if(prof||serv)dataRow('Profissional',(prof||'')+(serv?' / '+serv:''));
+  py+=5;
+
+  secBar('2. Funcionalidade (IVCF-20)','#0891b2');
+  dataRow('Pontuação',ivcf.pts+' pts');
+  dataRow('Classificação',ivcf.cls);
+  py+=5;
+
+  secBar('3. Redes de suporte','#00897b');
+  dataRow('Total vínculos',String(totalV));
+  dataRow('Positivos',String(posV));
+  dados.forEach(s=>{
+    if(!s.vinculos.length)return;
+    ctx.font='bold 9px sans-serif';ctx.fillStyle=s.cor;ctx.textBaseline='top';ctx.textAlign='left';
+    ctx.fillText(s.emoji+' '+s.label.substring(0,22),px,py);py+=12;
+    s.vinculos.forEach(v=>{
+      ctx.font='9px sans-serif';ctx.fillStyle=tcol;
+      const parts=[v.parentesco,v.tipoAnimal,v.nome].filter(Boolean);
+      ctx.fillText('• '+parts.join(' — ').substring(0,32),px+6,py);py+=11;
+    });
+  });
+  py+=5;
+
+  secBar('4. Risco / Violência',risco.cor);
+  dataRow('Nível',risco.nivel);
+  const obsR=document.getElementById('obs-risco').value;
+  if(obsR){ctx.font='9px sans-serif';ctx.fillStyle=tcol;ctx.textBaseline='top';py=wrapText(ctx,obsR,px,py,colW,12);}
+  const plano=document.getElementById('plano').value;
+  if(plano){ctx.font='bold 9px sans-serif';ctx.fillStyle=scol;ctx.textBaseline='top';ctx.fillText('Plano:',px,py);py+=11;ctx.fillStyle=tcol;ctx.font='9px sans-serif';py=wrapText(ctx,plano,px,py,colW,12);}
+  py+=5;
+
+  secBar('5. Legenda dos vínculos','#444444');
+  const legs=[
+    {l:'Forte e positiva',c:'#2e7d32',lw:2.5,d:[]},
+    {l:'Fraca / distante',c:'#f9a825',lw:1.5,d:[6,4]},
+    {l:'Estressante/conflituosa',c:'#c62828',lw:1.5,d:[2,3]},
+    {l:'Rompida / inexistente',c:'#9e9e9e',lw:1,d:[4,4]},
+    {l:'Pet — vínculo positivo',c:'#d97706',lw:2.5,d:[]},
+    {l:'Pet — moderado',c:'#f59e0b',lw:1.5,d:[6,4]},
+    {l:'Pet — sobrecarga',c:'#c62828',lw:1.5,d:[2,3]},
+    {l:'Pet — perdeu recentemente',c:'#9e9e9e',lw:1.5,d:[3,2,8,2]},
+  ];
+  legs.forEach(it=>{
+    ctx.strokeStyle=it.c;ctx.lineWidth=it.lw;ctx.setLineDash(it.d);
+    ctx.beginPath();ctx.moveTo(px,py+5);ctx.lineTo(px+28,py+5);ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.font='9px sans-serif';ctx.fillStyle=tcol;ctx.textBaseline='middle';ctx.textAlign='left';
+    ctx.fillText(it.l,px+32,py+5);py+=14;
+  });
+  py+=8;
+  ctx.font='8px sans-serif';ctx.fillStyle=scol;ctx.textBaseline='top';
+  ctx.fillText('© Profa. Dra. Angelina Monteiro Furtado',px,py);py+=11;
+  ctx.fillText('Gerado em: '+new Date().toLocaleDateString('pt-BR'),px,py);
+
+  // ─ MAPA ─
+  const CX=MW/2,CY=MH/2+10,R1=74,R2=200,R3=308,N=SISTEMAS.length,sl=(2*Math.PI)/N;
+  [R1,R2,R3].forEach((r,ri)=>{
+    ctx.beginPath();ctx.arc(CX,CY,r,0,Math.PI*2);
+    ctx.strokeStyle=bcol;ctx.lineWidth=ri===2?1:0.5;ctx.setLineDash(ri===2?[4,3]:[]);ctx.stroke();ctx.setLineDash([]);
+  });
+  ctx.fillStyle=scol;ctx.font='9px sans-serif';ctx.textAlign='left';ctx.textBaseline='middle';
+  ctx.fillText('Rede próxima',CX+R2+5,CY-5);ctx.fillText('Rede ampliada',CX+R3+5,CY-5);
+
+  ctx.fillStyle=scol;ctx.font='9px sans-serif';ctx.textAlign='left';ctx.textBaseline='top';
+  ctx.fillText('Ecomapa — Pessoa Idosa  |  '+new Date().toLocaleDateString('pt-BR'),8,6);
+
+  ctx.beginPath();ctx.arc(CX,CY,R1,0,Math.PI*2);
+  ctx.fillStyle='#ede9fe';ctx.fill();ctx.strokeStyle='#5c6bc0';ctx.lineWidth=2;ctx.stroke();
+  const nome=document.getElementById('nome').value||'Pessoa Idosa';
+  const idade=document.getElementById('idade').value;
+  ctx.fillStyle=tcol;ctx.textAlign='center';ctx.textBaseline='middle';
+  ctx.font='bold 12px sans-serif';
+  ctx.fillText(nome.length>14?nome.substring(0,13)+'…':nome,CX,CY-(idade?9:0));
+  if(idade){ctx.font='9px sans-serif';ctx.fillStyle=scol;ctx.fillText(idade,CX,CY+9);}
+
+  ctx.beginPath();ctx.arc(CX+R1-5,CY-R1+5,8,0,Math.PI*2);
+  ctx.fillStyle=ivcf.cor;ctx.fill();
+  ctx.fillStyle=white;ctx.font='bold 8px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
+  ctx.fillText(ivcf.pts,CX+R1-5,CY-R1+5);
+
+  if(risco.pts>0){
+    ctx.beginPath();ctx.arc(CX-R1+5,CY-R1+5,8,0,Math.PI*2);
+    ctx.fillStyle=risco.cor;ctx.fill();
+    ctx.fillStyle=white;ctx.font='bold 9px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.fillText('!',CX-R1+5,CY-R1+5);
+  }
+
+  dados.forEach((s,i)=>{
+    const angle=sl*i-Math.PI/2,nx=CX+R2*Math.cos(angle),ny=CY+R2*Math.sin(angle);
+    const nv=s.vinculos.length,maxH=Math.min(sl*0.36,0.25);
+    s.vinculos.forEach((v,vi)=>{
+      const sp=nv>1?((vi/(nv-1))-0.5)*2*maxH:0,va=angle+sp;
+      const rE=R3+18+(nv>2?nv*8:0),ex=CX+rE*Math.cos(va),ey=CY+rE*Math.sin(va);
+      const tipo=v.tipo||'',isPet=s.id==='pet';
+      const corV=isPet?(PCORES[tipo]||'#d97706'):(TCORES[tipo]||'#9e9e9e');
+      const dashV=isPet?(PDASH[tipo]||[]):(TDASH[tipo]||[]);
+      const lwV=isPet?(PLW[tipo]||1.5):(TLW[tipo]||1);
+      ctx.strokeStyle=corV;ctx.lineWidth=lwV;ctx.setLineDash(dashV);
+      ctx.beginPath();ctx.moveTo(CX+(R1+5)*Math.cos(angle),CY+(R1+5)*Math.sin(angle));ctx.lineTo(ex,ey);ctx.stroke();
+      ctx.setLineDash([]);
+      const nR=(v.parentesco||v.tipoAnimal)?27:20;
+      ctx.beginPath();ctx.arc(ex,ey,nR,0,Math.PI*2);
+      ctx.fillStyle='#fafafa';ctx.fill();ctx.strokeStyle=corV;ctx.lineWidth=1.5;ctx.stroke();
+      ctx.textAlign='center';ctx.textBaseline='middle';
+      if(v.parentesco||v.tipoAnimal){
+        const sub=v.parentesco||v.tipoAnimal||'';
+        ctx.font='7px sans-serif';ctx.fillStyle=scol;
+        ctx.fillText(sub.length>11?sub.substring(0,10)+'…':sub,ex,ey-7);
+        ctx.font='8px sans-serif';ctx.fillStyle=tcol;
+        ctx.fillText(v.nome.length>11?v.nome.substring(0,10)+'…':v.nome,ex,ey+5);
+      }else{
+        ctx.font='8px sans-serif';ctx.fillStyle=tcol;
+        ctx.fillText(v.nome.length>12?v.nome.substring(0,11)+'…':v.nome,ex,ey);
+      }
+    });
+    ctx.beginPath();ctx.arc(nx,ny,26,0,Math.PI*2);
+    ctx.fillStyle=s.cor+'28';ctx.fill();ctx.strokeStyle=s.cor;ctx.lineWidth=1.5;ctx.setLineDash([]);ctx.stroke();
+    ctx.font='14px sans-serif';ctx.fillStyle=tcol;ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.fillText(s.emoji,nx,ny-6);ctx.font='8px sans-serif';ctx.fillStyle=scol;ctx.fillText(s.label.split(' ')[0],nx,ny+10);
+  });
+}
+
+// ═══ EXPORT ═══════════════════════════════════
+function doDownloadPNG(){
+  drawCanvas();
+  document.getElementById('eco-canvas').toBlob(blob=>{
+    const url=URL.createObjectURL(blob),a=document.createElement('a');
+    a.href=url;a.download='ecomapa_idoso.png';document.body.appendChild(a);a.click();
+    setTimeout(()=>{URL.revokeObjectURL(url);a.remove();},1500);
+  },'image/png');
+}
+function doImprimir(){
+  drawCanvas();
+  const dataURL=document.getElementById('eco-canvas').toDataURL('image/png');
+  const html=`<!DOCTYPE html><html><head><title>Ecomapa</title>
+    <style>*{margin:0;padding:0}body{background:#fff}img{width:100%;display:block}
+    @media print{@page{size:landscape;margin:0}}</style></head>
+    <body><img src="${dataURL}" onload="window.print()"/></body></html>`;
+  const blob=new Blob([html],{type:'text/html'}),url=URL.createObjectURL(blob),a=document.createElement('a');
+  a.href=url;a.target='_blank';document.body.appendChild(a);a.click();
+  setTimeout(()=>{URL.revokeObjectURL(url);a.remove();},1500);
+}
+
+// ═══ NAVEGAÇÃO ════════════════════════════════
+function showTab(t){
+  const names=['dados','ivcf','sistemas','risco','mapa'];
+  document.querySelectorAll('.tab').forEach((b,i)=>b.classList.toggle('active',names[i]===t));
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.getElementById('sec-'+t).classList.add('active');
+  if(t==='mapa'){buildResumo();drawCanvas();}
+}
+
+// ═══ INIT ═════════════════════════════════════
+buildIVCF();buildRisco();buildSistemas();
+</script>
+</body>
+</html>
