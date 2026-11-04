@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ecomapa — Pessoa Idosa | Profa. Dra. Angelina Monteiro Furtado</title>
+<title>Ecomapa da Pessoa Idosa | Profa. Dra. Angelina Monteiro Furtado</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Segoe UI',Arial,sans-serif;background:#f5f4f0;color:#1a1a18;padding:16px;max-width:1100px;margin:0 auto}
@@ -26,22 +26,28 @@ textarea{resize:vertical;min-height:56px}
 .card-header{display:flex;align-items:center;gap:8px;margin-bottom:10px}
 .dot{width:11px;height:11px;border-radius:50%;flex-shrink:0}
 .card-title{font-size:14px;font-weight:600}
-.rel-row{display:flex;align-items:center;gap:6px;margin-bottom:6px;flex-wrap:wrap}
-.rel-row select{flex:1;min-width:110px;font-size:12px;padding:4px 6px}
-.rel-row input{flex:2;min-width:130px;font-size:12px;padding:4px 7px}
-.rel-row button{font-size:11px;padding:3px 8px;border-radius:5px;border:1px solid #d4d2c8;background:#fff;cursor:pointer;color:#888}
+.rel-row{border:1px solid #eeece4;border-radius:8px;padding:8px;margin-bottom:8px;background:#fcfbf8}
+.rel-line{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.rel-line+.rel-line{margin-top:6px}
+.rel-row select{flex:1;min-width:120px;font-size:12px;padding:5px 6px}
+.rel-row input[type=text]{flex:2;min-width:140px;font-size:12px;padding:5px 7px}
+.rel-row .cp{font-size:12px;color:#1a1a18;display:flex;align-items:center;gap:4px;margin:0;white-space:nowrap;cursor:pointer}
+.rel-row button{font-size:11px;padding:3px 8px;border-radius:5px;border:1px solid #d4d2c8;background:#fff;cursor:pointer;color:#888;margin-left:auto}
 .rel-row button:hover{background:#fff0f0;border-color:#c62828;color:#c62828}
+.dica{font-size:11.5px;color:#5a5957;margin:-4px 0 8px;line-height:1.5}
 .btn{padding:8px 18px;font-size:13px;border-radius:6px;border:1px solid #d4d2c8;background:#fff;cursor:pointer;color:#1a1a18;font-weight:500;transition:all .15s}
 .btn:hover{background:#f0eeff;border-color:#7c3aed}
 .btn-primary{background:#7c3aed;color:#fff;border-color:#7c3aed}
 .btn-primary:hover{background:#6d28d9}
+.btn-gold{background:#d97706;color:#fff;border-color:#d97706;font-size:12px}
+.btn-gold:hover{background:#b45309}
 .actions{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
 .alert-box{border-radius:8px;padding:10px 14px;font-size:13px;margin-top:10px;border:1px solid}
 .alert-alto{background:#fff5f5;border-color:#c62828;color:#7f1d1d}
 .alert-medio{background:#fffbeb;border-color:#d97706;color:#78350f}
 .alert-baixo{background:#f0fdf4;border-color:#16a34a;color:#14532d}
 #canvas-wrap{width:100%;overflow-x:auto;border:1px solid #e8e6de;border-radius:10px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-canvas{display:block}
+canvas{display:block;image-rendering:high-quality}
 .ivcf-row{display:flex;align-items:center;justify-content:space-between;padding:6px 0;border-bottom:1px solid #f0ede6;font-size:13px}
 .ivcf-row:last-child{border-bottom:none}
 .ivcf-opts{display:flex;gap:12px}
@@ -61,16 +67,16 @@ canvas{display:block}
   <span>Reprodução ou modificação não autorizada é proibida.</span>
 </div>
 
-<h2>Ecomapa — Pessoa Idosa</h2>
+<h2>Ecomapa da Pessoa Idosa</h2>
 <p class="sub">Mapeamento integrado de redes de suporte, funcionalidade e vulnerabilidade</p>
 
 <div class="intro-box">
   <p style="font-size:14px;font-weight:600;margin-bottom:8px;color:#1a1a18">Sobre esta ferramenta</p>
-  <p style="font-size:13px;color:#5a5957;line-height:1.7;margin-bottom:10px">O <strong style="color:#1a1a18">Ecomapa</strong> é um instrumento gráfico utilizado por profissionais de saúde, serviço social, terapia ocupacional e gerontologia para mapear as redes de apoio de uma pessoa e a qualidade de suas relações com o meio social. Criado por Ann Hartman (1978) e amplamente adotado na atenção à pessoa idosa, ele permite visualizar, de forma clara e objetiva, os vínculos familiares, comunitários e institucionais — suas forças, fragilidades e rupturas.</p>
+  <p style="font-size:13px;color:#5a5957;line-height:1.7;margin-bottom:10px">O <strong style="color:#1a1a18">Ecomapa da Pessoa Idosa</strong> é um instrumento gráfico de avaliação da rede de suporte social, fundamentado no <strong style="color:#1a1a18">Mapa Mínimo de Relações do Idoso</strong> (Domingues, 2000; 2004), derivado do mapa de rede social de Sluzki (1997), e no <strong style="color:#1a1a18">ecomapa de Hartman</strong> (1978). Do MMRI, incorpora os círculos concêntricos definidos pela frequência de contato: quanto mais próximo do centro, mais frequente o contato. Do ecomapa de Hartman, incorpora a representação da qualidade do vínculo pelo tipo de linha: forte, fraco, conflituoso ou rompido. As duas informações são independentes, o que permite identificar, por exemplo, um familiar com contato semanal e vínculo conflituoso.</p>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-bottom:12px">
     <div style="display:flex;gap:8px;align-items:flex-start"><span style="font-size:18px">👤</span><span style="font-size:12px;color:#5a5957;line-height:1.5"><strong style="color:#1a1a18">Identificação</strong><br>Dados sociodemográficos, condições de saúde, moradia e renda.</span></div>
     <div style="display:flex;gap:8px;align-items:flex-start"><span style="font-size:18px">🩺</span><span style="font-size:12px;color:#5a5957;line-height:1.5"><strong style="color:#1a1a18">Funcionalidade (IVCF-20)</strong><br>Vulnerabilidade clínico-funcional: mobilidade, cognição, humor e autonomia.</span></div>
-    <div style="display:flex;gap:8px;align-items:flex-start"><span style="font-size:18px">🌐</span><span style="font-size:12px;color:#5a5957;line-height:1.5"><strong style="color:#1a1a18">Redes de suporte</strong><br>Vínculos com família, saúde, serviços, religião, lazer, cuidadores e pet.</span></div>
+    <div style="display:flex;gap:8px;align-items:flex-start"><span style="font-size:18px">🌐</span><span style="font-size:12px;color:#5a5957;line-height:1.5"><strong style="color:#1a1a18">Redes de suporte</strong><br>8 sistemas: família, amigos, saúde, serviços sociais e de cuidado, religião, lazer, trabalho e pet — com frequência, qualidade e meio de contato.</span></div>
     <div style="display:flex;gap:8px;align-items:flex-start"><span style="font-size:18px">⚠️</span><span style="font-size:12px;color:#5a5957;line-height:1.5"><strong style="color:#1a1a18">Risco e violência</strong><br>Negligência, violência, isolamento e sobrecarga do cuidador.</span></div>
     <div style="display:flex;gap:8px;align-items:flex-start"><span style="font-size:18px">🗺️</span><span style="font-size:12px;color:#5a5957;line-height:1.5"><strong style="color:#1a1a18">Mapa visual</strong><br>Ecomapa gráfico com painel de dados completo, exportável para prontuário.</span></div>
   </div>
@@ -80,6 +86,7 @@ canvas{display:block}
       DOMINGUES, M. A. R. da C. <strong>Mapa mínimo de relações: adaptação de um instrumento gráfico para a configuração da rede de suporte social do idoso.</strong> 2000. Dissertação (Mestrado) — FSP/USP, São Paulo, 2000.<br>
       DOMINGUES, M. A. R. da C. <strong>Mapa mínimo de relações: instrumento gráfico para identificar a rede de suporte social do idoso.</strong> 2004. Tese (Doutorado) — USP, São Paulo. Disponível em: https://doi.org/10.11606/T.6.2004.tde-09032021-184132<br>
       HARTMAN, Ann. Diagrammatic assessment of family relationships. <strong>Social Casework,</strong> Chicago, v. 59, n. 8, p. 465-476, out. 1978.<br>
+      SLUZKI, C. E. <strong>A rede social na prática sistêmica:</strong> alternativas terapêuticas. São Paulo: Casa do Psicólogo, 1997.<br>
       MORAES, E. N. <strong>Atenção à saúde do idoso: aspectos conceituais.</strong> Brasília: OPAS, 2012. (IVCF-20, validado em 2014.)<br>
       WRIGHT, L. M.; LEAHEY, M. <strong>Enfermeiras e famílias: um guia para avaliação e intervenção na família.</strong> 5. ed. São Paulo: Roca, 2012. (Modelo Calgary de Avaliação Familiar.)
     </p>
@@ -143,7 +150,13 @@ canvas{display:block}
 
 <!-- 3. SISTEMAS -->
 <div id="sec-sistemas" class="section">
-  <p style="font-size:13px;color:#5a5957;margin-bottom:12px">Para cada sistema, adicione os vínculos e a qualidade da relação com a pessoa idosa.</p>
+  <div class="card" style="font-size:12.5px;color:#5a5957;line-height:1.6">
+    Para cada vínculo, registre:<br>
+    <strong style="color:#1a1a18">Frequência de contato</strong>: define a distância do centro no mapa. Considere todo tipo de contato, inclusive telefone e vídeo.<br>
+    <strong style="color:#1a1a18">Qualidade do vínculo</strong>: define o tipo de linha.<br>
+    <strong style="color:#1a1a18">Meio de contato</strong> e <strong style="color:#1a1a18">cuidador(a) principal</strong>, quando se aplicar.<br>
+    Vínculos rompidos e perdas recentes são posicionados automaticamente no círculo externo.
+  </div>
   <div id="sistemas-cards"></div>
   <div class="actions">
     <button class="btn" onclick="showTab('ivcf')">← Voltar</button>
@@ -178,35 +191,50 @@ canvas{display:block}
   <div class="actions">
     <button class="btn" onclick="showTab('risco')">← Editar</button>
     <button class="btn btn-primary" onclick="doDownloadPNG()">⬇️ Baixar PNG</button>
+    <button class="btn btn-gold" onclick="doDownloadAltaRes()">⬇️ Alta resolução (para artigos)</button>
     <button class="btn" onclick="doImprimir()">🖨️ Imprimir</button>
   </div>
 </div>
 
 <script>
-// ═══ CONSTANTES ═══════════════════════════════
+// ═══ CONSTANTES ═══
+const PARENTESCO =['Filho(a)','Cônjuge / parceiro(a)','Genro / Nora','Neto(a)','Bisneto(a)','Irmão / Irmã','Sobrinho(a)','Pai / Mãe','Tio(a)','Primo(a)','Cunhado(a)','Outro familiar'];
+const PET_TIPOS  =['Cão','Gato','Pássaro','Peixe','Outro'];
+const AMIGOS_TIPOS=['Amigo(a)','Vizinho(a)','Compadre / Comadre','Outro'];
+const SERV_SAUDE =['Atenção primária (UBS/ESF)','Especialista / ambulatório','Saúde mental (CAPS, psicólogo, psiquiatra)','Hospital / urgência','Outro serviço de saúde'];
+const SERV_SOCIAL=['Assistência social (CRAS/CREAS)','Cuidador(a) formal / contratado(a)','Centro-dia / ILPI','Outro serviço'];
 const SISTEMAS=[
-  {id:'familia',     label:'Família',                    cor:'#e53935',emoji:'👨‍👩‍👧'},
-  {id:'saude',       label:'Saúde',                      cor:'#1e88e5',emoji:'🏥'},
-  {id:'religiao',    label:'Religião / Espiritualidade',  cor:'#8e24aa',emoji:'⛪'},
-  {id:'amigos',      label:'Amigos / Vizinhos',           cor:'#fb8c00',emoji:'🤝'},
-  {id:'servicos',    label:'Serviços Sociais',            cor:'#00897b',emoji:'🏛️'},
-  {id:'lazer',       label:'Lazer / Cultura',             cor:'#f4511e',emoji:'🎭'},
-  {id:'trabalho',    label:'Trabalho / Aposentadoria',    cor:'#6d4c41',emoji:'💼'},
-  {id:'saude_mental',label:'Saúde Mental / Psicológica',  cor:'#0891b2',emoji:'🧠'},
-  {id:'cuidador',    label:'Cuidador(a)',                 cor:'#0f766e',emoji:'🩺'},
-  {id:'digital',     label:'Tecnologia / Comunicação',   cor:'#6366f1',emoji:'📱'},
-  {id:'pet',         label:'Animal de estimação',        cor:'#d97706',emoji:'🐾'},
+  {id:'familia', label:'Família',                         curto:'Família',          cor:'#e53935',emoji:'👨‍👩‍👧',sub:PARENTESCO,  subPh:'Parentesco',     ph:'Nome da pessoa'},
+  {id:'saude',   label:'Saúde (inclui saúde mental)',     curto:'Saúde',            cor:'#1e88e5',emoji:'🏥',sub:SERV_SAUDE,  subPh:'Tipo de serviço',ph:'Ex.: UBS Centro, Dr. José, CAPS',
+   dica:'Inclui atenção primária, especialistas, hospital e saúde mental (CAPS, psicólogo, psiquiatra, eMulti, grupos terapêuticos).'},
+  {id:'religiao',label:'Religião / Espiritualidade',      curto:'Religião',         cor:'#8e24aa',emoji:'⛪',ph:'Ex.: Paróquia São Pedro, pastoral da pessoa idosa'},
+  {id:'amigos',  label:'Amigos / Vizinhos',               curto:'Amigos/Vizinhos',  cor:'#fb8c00',emoji:'🤝',sub:AMIGOS_TIPOS,subPh:'Relação',        ph:'Nome da pessoa'},
+  {id:'servicos',label:'Serviços sociais e de cuidado',   curto:'Serviços/Cuidado', cor:'#00897b',emoji:'🏛️',sub:SERV_SOCIAL, subPh:'Tipo de serviço',ph:'Ex.: CRAS Centro, cuidadora Joana',
+   dica:'Inclui CRAS/CREAS, cuidador(a) formal ou contratado(a), centro-dia e ILPI. Cuidador(a) familiar deve ser registrado(a) em Família, marcando "cuidador(a) principal".'},
+  {id:'lazer',   label:'Lazer / Cultura',                 curto:'Lazer/Cultura',    cor:'#f4511e',emoji:'🎭',ph:'Ex.: grupo de convivência, dança'},
+  {id:'trabalho',label:'Trabalho / Aposentadoria',        curto:'Trabalho/Aposent.',cor:'#6d4c41',emoji:'💼',ph:'Ex.: associação de aposentados, sindicato'},
+  {id:'pet',     label:'Animal de estimação',             curto:'Pet',              cor:'#d97706',emoji:'🐾',sub:PET_TIPOS,   subPh:'Tipo',           ph:'Nome do animal'},
 ];
+// Qualidade do vínculo (Hartman)
 const TIPOS      =['Forte e positiva','Fraca / distante','Estressante / conflituosa','Rompida / inexistente'];
 const TCORES     ={'Forte e positiva':'#2e7d32','Fraca / distante':'#f9a825','Estressante / conflituosa':'#c62828','Rompida / inexistente':'#9e9e9e'};
 const TDASH      ={'Forte e positiva':[],'Fraca / distante':[6,4],'Estressante / conflituosa':[2,3],'Rompida / inexistente':[4,4]};
 const TLW        ={'Forte e positiva':2.5,'Fraca / distante':1.5,'Estressante / conflituosa':1.5,'Rompida / inexistente':1};
-const TIPO_PET   =['Vínculo forte e positivo','Vínculo presente / moderado','Causa sobrecarga / dificuldade','Perdeu recentemente'];
-const PCORES     ={'Vínculo forte e positivo':'#d97706','Vínculo presente / moderado':'#f59e0b','Causa sobrecarga / dificuldade':'#c62828','Perdeu recentemente':'#9e9e9e'};
-const PDASH      ={'Vínculo forte e positivo':[],'Vínculo presente / moderado':[6,4],'Causa sobrecarga / dificuldade':[2,3],'Perdeu recentemente':[3,2,8,2]};
-const PLW        ={'Vínculo forte e positivo':2.5,'Vínculo presente / moderado':1.5,'Causa sobrecarga / dificuldade':1.5,'Perdeu recentemente':1.5};
-const PARENTESCO =['Filho(a)','Cônjuge / parceiro(a)','Genro / Nora','Neto(a)','Irmão / Irmã','Sobrinho(a)','Pai / Mãe','Avô / Avó','Tio(a)','Primo(a)','Cunhado(a)','Outro familiar'];
-const PET_TIPOS  =['Cão','Gato','Pássaro','Peixe','Outro'];
+const TIPO_PET   =['Vínculo forte e positivo','Vínculo presente / moderado','Vínculo fraco / indiferente','Causa sobrecarga / dificuldade','Perdeu recentemente'];
+const PCORES     ={'Vínculo forte e positivo':'#d97706','Vínculo presente / moderado':'#f59e0b','Vínculo fraco / indiferente':'#c9a227','Causa sobrecarga / dificuldade':'#c62828','Perdeu recentemente':'#9e9e9e'};
+const PDASH      ={'Vínculo forte e positivo':[],'Vínculo presente / moderado':[6,4],'Vínculo fraco / indiferente':[3,7],'Causa sobrecarga / dificuldade':[2,3],'Perdeu recentemente':[3,2,8,2]};
+const PLW        ={'Vínculo forte e positivo':2.5,'Vínculo presente / moderado':1.5,'Vínculo fraco / indiferente':1,'Causa sobrecarga / dificuldade':1.5,'Perdeu recentemente':1.5};
+const SEM_CONTATO=['Rompida / inexistente','Perdeu recentemente'];
+// Frequência de contato (MMRI) — índice 0 = círculo interno
+const FREQ       =['Semanal ou mais','Mensal','Ocasional (menos que mensal)'];
+const FREQ_PET   =['Mora com a pessoa idosa','Contato frequente (não mora junto)','Contato ocasional'];
+const FREQ_CURTA =['semanal','mensal','ocasional'];
+const MEIOS      =['Presencial','Telefone','Vídeo / WhatsApp','Redes sociais / mensagens'];
+const MEIO_TAG   ={'Telefone':'telefone','Vídeo / WhatsApp':'vídeo','Redes sociais / mensagens':'mensagens'};
+const CURTO      ={'Cônjuge / parceiro(a)':'Cônjuge','Genro / Nora':'Genro/Nora','Irmão / Irmã':'Irmão(ã)','Outro familiar':'Familiar',
+  'Atenção primária (UBS/ESF)':'APS/ESF','Especialista / ambulatório':'Especialista','Saúde mental (CAPS, psicólogo, psiquiatra)':'Saúde mental',
+  'Hospital / urgência':'Hospital','Outro serviço de saúde':'Saúde','Assistência social (CRAS/CREAS)':'CRAS/CREAS',
+  'Cuidador(a) formal / contratado(a)':'Cuidador formal','Centro-dia / ILPI':'Centro-dia/ILPI','Outro serviço':'Serviço','Compadre / Comadre':'Compadre(e)'};
 const IVCF=[
   {q:'Autopercepção da saúde ruim',pts:1},
   {q:'Incontinência urinária ou fecal',pts:2},
@@ -235,7 +263,7 @@ const RISCO_ITEMS=[
   {q:'Ausência de rede de apoio',peso:2},
 ];
 
-// ═══ IVCF ═════════════════════════════════════
+// ═══ IVCF ═══
 function buildIVCF(){
   document.getElementById('ivcf-items').innerHTML=IVCF.map((it,i)=>`
     <div class="ivcf-row">
@@ -261,7 +289,7 @@ function calcIVCF(){
   return{pts,cls,cor};
 }
 
-// ═══ RISCO ════════════════════════════════════
+// ═══ RISCO ═══
 function buildRisco(){
   document.getElementById('risco-items').innerHTML=RISCO_ITEMS.map((it,i)=>`
     <div class="ivcf-row">
@@ -281,67 +309,74 @@ function calcRisco(){
   return{pts,nivel,cor};
 }
 
-// ═══ SISTEMAS ════════════════════════════════
+// ═══ SISTEMAS ═══
+const opts=(arr,ph)=>(ph!==undefined?`<option value="">${ph}</option>`:'')+arr.map(p=>`<option>${p}</option>`).join('');
 function buildSistemas(){
   document.getElementById('sistemas-cards').innerHTML=SISTEMAS.map(s=>`
     <div class="card">
       <div class="card-header"><div class="dot" style="background:${s.cor}"></div><span class="card-title">${s.emoji} ${s.label}</span></div>
+      ${s.dica?`<p class="dica">${s.dica}</p>`:''}
       <div id="rows-${s.id}"></div>
-      <button class="btn" style="font-size:11px;padding:3px 10px;margin-top:6px" onclick="addRow('${s.id}')">+ Adicionar vínculo</button>
+      <button class="btn" style="font-size:11px;padding:3px 10px;margin-top:2px" onclick="addRow('${s.id}')">+ Adicionar vínculo</button>
     </div>`).join('');
   SISTEMAS.forEach(s=>addRow(s.id));
 }
 function addRow(sid){
+  const s=SISTEMAS.find(x=>x.id===sid),isPet=sid==='pet';
   const c=document.getElementById('rows-'+sid);
   const r=document.createElement('div');r.className='rel-row';
-  if(sid==='familia'){
-    r.innerHTML=`<select><option value="">Parentesco</option>${PARENTESCO.map(p=>`<option>${p}</option>`).join('')}</select>
-      <input type="text" placeholder="Nome da pessoa">
-      <select>${TIPOS.map(t=>`<option>${t}</option>`).join('')}</select>
-      <button onclick="this.parentElement.remove()">✕</button>`;
-  }else if(sid==='pet'){
-    r.innerHTML=`<select><option value="">Tipo</option>${PET_TIPOS.map(p=>`<option>${p}</option>`).join('')}</select>
-      <input type="text" placeholder="Nome do animal">
-      <select>${TIPO_PET.map(t=>`<option>${t}</option>`).join('')}</select>
-      <button onclick="this.parentElement.remove()">✕</button>`;
-  }else{
-    r.innerHTML=`<input type="text" placeholder="Nome / instituição">
-      <select>${TIPOS.map(t=>`<option>${t}</option>`).join('')}</select>
-      <button onclick="this.parentElement.remove()">✕</button>`;
-  }
+  const subSel=s.sub?`<select class="f-sub">${opts(s.sub,s.subPh)}</select>`:'';
+  const forca=`<select class="f-forca" title="Qualidade do vínculo">${opts(isPet?TIPO_PET:TIPOS)}</select>`;
+  const freq=`<select class="f-freq" title="Frequência de contato">${opts(isPet?FREQ_PET:FREQ,isPet?'Convivência':'Frequência de contato')}</select>`;
+  const extra=isPet?'':`<select class="f-meio" title="Principal meio de contato">${opts(MEIOS,'Meio de contato')}</select>
+      <label class="cp"><input type="checkbox" class="f-cp"> Cuidador(a) principal</label>`;
+  r.innerHTML=`<div class="rel-line">${subSel}<input type="text" class="f-nome" placeholder="${s.ph}">${forca}</div>
+    <div class="rel-line">${freq}${extra}<button onclick="this.closest('.rel-row').remove()" title="Remover">✕</button></div>`;
   c.appendChild(r);
 }
 function getData(){
   return SISTEMAS.map(s=>{
-    const rows=document.querySelectorAll('#rows-'+s.id+' .rel-row');
     const vinculos=[];
-    rows.forEach(r=>{
-      const inputs=r.querySelectorAll('input[type=text]');
-      const selects=r.querySelectorAll('select');
-      const nome=inputs[0]?.value.trim();
-      let tipo='',parentesco='',tipoAnimal='';
-      if(s.id==='familia'){parentesco=selects[0]?.value;tipo=selects[1]?.value;}
-      else if(s.id==='pet'){tipoAnimal=selects[0]?.value;tipo=selects[1]?.value;}
-      else{tipo=selects[0]?.value;}
-      if(nome)vinculos.push({nome,tipo,parentesco,tipoAnimal});
+    document.querySelectorAll('#rows-'+s.id+' .rel-row').forEach(r=>{
+      const q=c=>r.querySelector(c);
+      const nome=(q('.f-nome')?.value||'').trim();
+      if(!nome)return;
+      const tipo=q('.f-forca')?.value||'';
+      const lista=s.id==='pet'?FREQ_PET:FREQ;
+      const fi=lista.indexOf(q('.f-freq')?.value||'');
+      const semContato=SEM_CONTATO.includes(tipo);
+      vinculos.push({
+        nome,tipo,sub:q('.f-sub')?.value||'',
+        freqIdx:fi,                                  // -1 = não informada
+        anel:semContato?2:(fi<0?1:fi),               // rompidos/perdas → círculo externo
+        semFreq:fi<0&&!semContato,
+        meio:q('.f-meio')?.value||'',
+        cp:!!q('.f-cp')?.checked,
+      });
     });
     return{...s,vinculos};
   });
 }
+const curto=t=>CURTO[t]||t;
+const estiloLinha=(v,isPet)=>isPet
+  ?{c:PCORES[v.tipo]||'#d97706',d:PDASH[v.tipo]||[],lw:PLW[v.tipo]||1.5}
+  :{c:TCORES[v.tipo]||'#9e9e9e',d:TDASH[v.tipo]||[],lw:TLW[v.tipo]||1};
 
-// ═══ RESUMO ═══════════════════════════════════
+// ═══ RESUMO ═══
 function buildResumo(){
   const ivcf=calcIVCF(),risco=calcRisco(),dados=getData();
-  const totalV=dados.reduce((a,s)=>a+s.vinculos.length,0);
-  const posV=dados.reduce((a,s)=>a+s.vinculos.filter(v=>v.tipo==='Forte e positiva'||v.tipo==='Vínculo forte e positivo').length,0);
+  const todos=dados.flatMap(s=>s.vinculos);
+  const posV=todos.filter(v=>v.tipo==='Forte e positiva'||v.tipo==='Vínculo forte e positivo').length;
+  const cps=todos.filter(v=>v.cp).map(v=>v.nome);
   document.getElementById('score-resumo').innerHTML=`
     <div class="score-card"><div class="score-label">IVCF</div><div class="score-val" style="color:${ivcf.cor}">${ivcf.pts}</div><div style="font-size:11px;color:#5a5957">${ivcf.cls}</div></div>
-    <div class="score-card"><div class="score-label">Vínculos totais</div><div class="score-val">${totalV}</div></div>
+    <div class="score-card"><div class="score-label">Vínculos totais</div><div class="score-val">${todos.length}</div><div style="font-size:11px;color:#5a5957">${todos.filter(v=>v.anel===0&&!SEM_CONTATO.includes(v.tipo)).length} com contato semanal</div></div>
     <div class="score-card"><div class="score-label">Vínculos positivos</div><div class="score-val" style="color:#16a34a">${posV}</div></div>
+    <div class="score-card"><div class="score-label">Cuidador(a) principal</div><div class="score-val" style="font-size:14px;color:${cps.length?'#7c3aed':'#c62828'}">${cps.length?cps.join(', '):'Não identificado'}</div></div>
     <div class="score-card"><div class="score-label">Risco</div><div class="score-val" style="font-size:14px;color:${risco.cor}">${risco.nivel}</div></div>`;
 }
 
-// ═══ CANVAS ═══════════════════════════════════
+// ═══ CANVAS (Alta Resolução) ═══
 function wrapText(ctx,text,x,y,maxW,lineH){
   if(!text)return y;
   const words=text.split(' ');let line='';
@@ -353,184 +388,289 @@ function wrapText(ctx,text,x,y,maxW,lineH){
   ctx.fillText(line,x,y);return y+lineH;
 }
 
-function drawCanvas(){
-  const MW=800,MH=820,PW=330,W=MW+PW,H=MH;
-  const canvas=document.getElementById('eco-canvas');
-  canvas.width=W;canvas.height=H;
-  const ctx=canvas.getContext('2d');
-  ctx.clearRect(0,0,W,H);
+// Geometria do mapa
+const MAPA={MW:840,CX:420,CY:430,R0:58,ANEIS:[125,200,275],NR:30,RARCO:314,RLAB:343};
 
-  const bg='#ffffff',bgP='#f7f6f2',tcol='#1a1a18',scol='#5a5957',bcol='#d4d2c8',white='#ffffff';
-  ctx.fillStyle=bg;ctx.fillRect(0,0,MW,MH);
-  ctx.fillStyle=bgP;ctx.fillRect(MW,0,PW,H);
-  ctx.strokeStyle=bcol;ctx.lineWidth=0.5;ctx.setLineDash([]);
-  ctx.beginPath();ctx.moveTo(MW,0);ctx.lineTo(MW,H);ctx.stroke();
+// Distribui setores (largura adaptável) e posiciona cada vínculo sem sobreposição
+function layout(dados){
+  const {ANEIS,NR}=MAPA,TAU=Math.PI*2;
+  const mesmo=k=>(2*NR+10)/ANEIS[k];                               // mesmo círculo
+  const dif=(a,b)=>Math.asin(Math.min(1,(NR+16)/ANEIS[Math.min(a,b)])); // linha externa passando ao lado de nó interno
+  const setores=dados.map(s=>{
+    // ordena alternando círculos para evitar vizinhos no mesmo círculo
+    const grupos=[0,1,2].map(k=>s.vinculos.filter(v=>v.anel===k));
+    const ord=[];let ult=-1;
+    while(grupos.some(g=>g.length)){
+      const cand=[0,1,2].filter(k=>grupos[k].length&&k!==ult).sort((a,b)=>grupos[b].length-grupos[a].length);
+      const k=cand.length?cand[0]:ult;ord.push(grupos[k].shift());ult=k;
+    }
+    const gaps=[];
+    for(let i=1;i<ord.length;i++){
+      const a=ord[i-1].anel,b=ord[i].anel;
+      let g=a===b?mesmo(a):dif(a,b);
+      if(i>=2&&ord[i-2].anel===b){const falta=mesmo(b)-(gaps[i-2]+g);if(falta>0)g+=falta;}
+      gaps.push(g);
+    }
+    const padL=ord.length?mesmo(ord[0].anel)/2+0.03:0,padR=ord.length?mesmo(ord[ord.length-1].anel)/2+0.03:0;
+    const usado=gaps.reduce((a,b)=>a+b,0);
+    const min=ord.length?0.63:0.42;
+    return{s,ord,gaps,padL,padR,usado,w:Math.max(min,usado+padL+padR)};
+  });
+  let tot=setores.reduce((a,x)=>a+x.w,0);
+  if(tot<TAU){const extra=(TAU-tot)/setores.length;setores.forEach(x=>x.w+=extra);}
+  else{const f=TAU/tot;setores.forEach(x=>{x.w*=f;x.gaps=x.gaps.map(g=>g*f);x.usado*=f;});}
+  let ini=-Math.PI/2-setores[0].w/2;
+  setores.forEach(x=>{
+    x.a0=ini;x.a1=ini+x.w;x.meio=ini+x.w/2;
+    let a=x.meio-x.usado/2;
+    x.ord.forEach((v,i)=>{if(i>0)a+=x.gaps[i-1];v.ang=a;});
+    ini+=x.w;
+  });
+  return setores;
+}
 
-  // ─ PAINEL ─
-  const px=MW+12,colW=PW-22;let py=14;
+// Painel lateral — retorna a altura usada (permite medir antes de desenhar)
+function drawPanel(ctx,px,colW,dados,ivcf,risco){
+  const tcol='#1a1a18',scol='#5a5957',white='#ffffff';let py=16;
   const secBar=(lbl,cor)=>{
-    ctx.fillStyle=cor;ctx.fillRect(px,py,colW,17);
-    ctx.fillStyle=white;ctx.font='bold 10px sans-serif';
-    ctx.textAlign='left';ctx.textBaseline='middle';
-    ctx.fillText(lbl,px+6,py+8);py+=21;
+    ctx.fillStyle=cor;ctx.fillRect(px,py,colW,20);
+    ctx.fillStyle=white;ctx.font='bold 12px sans-serif';ctx.textAlign='left';ctx.textBaseline='middle';
+    ctx.fillText(lbl,px+8,py+10);py+=25;
   };
   const dataRow=(lbl,val)=>{
     if(!val)return;
-    ctx.font='9px sans-serif';ctx.fillStyle=scol;ctx.textBaseline='top';ctx.textAlign='left';
+    ctx.font='11px sans-serif';ctx.fillStyle=scol;ctx.textBaseline='top';ctx.textAlign='left';
     ctx.fillText(lbl+':',px,py);
-    ctx.fillStyle=tcol;ctx.font='bold 9px sans-serif';
-    const v=String(val);ctx.fillText(v.length>30?v.substring(0,29)+'…':v,px+75,py);py+=13;
+    ctx.fillStyle=tcol;ctx.font='bold 11px sans-serif';
+    const v=String(val);ctx.fillText(v.length>34?v.substring(0,33)+'…':v,px+88,py);py+=16;
   };
-
-  const ivcf=calcIVCF(),risco=calcRisco(),dados=getData();
-  const totalV=dados.reduce((a,s)=>a+s.vinculos.length,0);
-  const posV=dados.reduce((a,s)=>a+s.vinculos.filter(v=>v.tipo==='Forte e positiva'||v.tipo==='Vínculo forte e positivo').length,0);
+  const todos=dados.flatMap(s=>s.vinculos);
+  const posV=todos.filter(v=>v.tipo==='Forte e positiva'||v.tipo==='Vínculo forte e positivo').length;
+  const cps=todos.filter(v=>v.cp).map(v=>v.nome);
 
   secBar('1. Identificação','#5c6bc0');
-  dataRow('Nome',document.getElementById('nome').value);
-  dataRow('Idade',document.getElementById('idade').value);
-  dataRow('Sexo',document.getElementById('sexo').value);
-  dataRow('Estado civil',document.getElementById('estado_civil').value);
-  dataRow('Moradia',document.getElementById('moradia').value);
-  dataRow('Município',document.getElementById('municipio').value);
-  dataRow('Escolaridade',document.getElementById('escolaridade').value);
-  dataRow('Renda',document.getElementById('renda').value);
+  ['nome:Nome','idade:Idade','sexo:Sexo','estado_civil:Estado civil','moradia:Moradia','municipio:Município','escolaridade:Escolaridade','renda:Renda']
+    .forEach(p=>{const[id,l]=p.split(':');dataRow(l,document.getElementById(id).value);});
   const diag=document.getElementById('diagnosticos').value;
-  if(diag){ctx.font='9px sans-serif';ctx.fillStyle=scol;ctx.textBaseline='top';ctx.fillText('Diagnósticos:',px,py);py+=12;ctx.fillStyle=tcol;py=wrapText(ctx,diag,px,py,colW,12);}
+  if(diag){
+    ctx.font='11px sans-serif';ctx.fillStyle=scol;ctx.textBaseline='top';
+    ctx.fillText('Diagnósticos:',px,py);py+=14;
+    ctx.fillStyle=tcol;py=wrapText(ctx,diag,px,py,colW,14);
+  }
   const prof=document.getElementById('profissional').value,serv=document.getElementById('servico').value;
   if(prof||serv)dataRow('Profissional',(prof||'')+(serv?' / '+serv:''));
-  py+=5;
+  py+=6;
 
   secBar('2. Funcionalidade (IVCF-20)','#0891b2');
   dataRow('Pontuação',ivcf.pts+' pts');
   dataRow('Classificação',ivcf.cls);
-  py+=5;
+  py+=6;
 
   secBar('3. Redes de suporte','#00897b');
-  dataRow('Total vínculos',String(totalV));
+  dataRow('Total vínculos',String(todos.length));
   dataRow('Positivos',String(posV));
+  dataRow('Cuidador(a) princ.',cps.length?cps.join(', '):'Não identificado');
   dados.forEach(s=>{
     if(!s.vinculos.length)return;
-    ctx.font='bold 9px sans-serif';ctx.fillStyle=s.cor;ctx.textBaseline='top';ctx.textAlign='left';
-    ctx.fillText(s.emoji+' '+s.label.substring(0,22),px,py);py+=12;
+    ctx.font='bold 11px sans-serif';ctx.fillStyle=s.cor;ctx.textBaseline='top';ctx.textAlign='left';
+    ctx.fillText(s.emoji+' '+s.label,px,py);py+=14;
     s.vinculos.forEach(v=>{
-      ctx.font='9px sans-serif';ctx.fillStyle=tcol;
-      const parts=[v.parentesco,v.tipoAnimal,v.nome].filter(Boolean);
-      ctx.fillText('• '+parts.join(' — ').substring(0,32),px+6,py);py+=11;
+      ctx.font='bold 10.5px sans-serif';ctx.fillStyle=tcol;
+      const l1='• '+[v.sub?curto(v.sub):'',v.nome].filter(Boolean).join(' — ')+(v.cp?'  (cuidador(a) principal)':'');
+      ctx.fillText(l1.length>52?l1.substring(0,51)+'…':l1,px+4,py);py+=13;
+      const freq=SEM_CONTATO.includes(v.tipo)?'sem contato':(v.freqIdx<0?'frequência não informada':(s.id==='pet'?FREQ_PET[v.freqIdx]:FREQ_CURTA[v.freqIdx]));
+      const l2=[freq,v.tipo.toLowerCase(),v.meio?v.meio.toLowerCase():''].filter(Boolean).join(' · ');
+      ctx.font='10px sans-serif';ctx.fillStyle=scol;
+      ctx.fillText(l2.length>58?l2.substring(0,57)+'…':l2,px+14,py);py+=14;
     });
   });
-  py+=5;
+  py+=6;
 
   secBar('4. Risco / Violência',risco.cor);
   dataRow('Nível',risco.nivel);
   const obsR=document.getElementById('obs-risco').value;
-  if(obsR){ctx.font='9px sans-serif';ctx.fillStyle=tcol;ctx.textBaseline='top';py=wrapText(ctx,obsR,px,py,colW,12);}
+  if(obsR){ctx.font='10px sans-serif';ctx.fillStyle=tcol;ctx.textBaseline='top';py=wrapText(ctx,obsR,px,py,colW,13);}
   const plano=document.getElementById('plano').value;
-  if(plano){ctx.font='bold 9px sans-serif';ctx.fillStyle=scol;ctx.textBaseline='top';ctx.fillText('Plano:',px,py);py+=11;ctx.fillStyle=tcol;ctx.font='9px sans-serif';py=wrapText(ctx,plano,px,py,colW,12);}
-  py+=5;
+  if(plano){
+    ctx.font='bold 11px sans-serif';ctx.fillStyle=scol;ctx.textBaseline='top';
+    ctx.fillText('Plano:',px,py);py+=13;
+    ctx.fillStyle=tcol;ctx.font='10px sans-serif';py=wrapText(ctx,plano,px,py,colW,13);
+  }
+  py+=6;
 
-  secBar('5. Legenda dos vínculos','#444444');
-  const legs=[
-    {l:'Forte e positiva',c:'#2e7d32',lw:2.5,d:[]},
-    {l:'Fraca / distante',c:'#f9a825',lw:1.5,d:[6,4]},
-    {l:'Estressante/conflituosa',c:'#c62828',lw:1.5,d:[2,3]},
-    {l:'Rompida / inexistente',c:'#9e9e9e',lw:1,d:[4,4]},
-    {l:'Pet — vínculo positivo',c:'#d97706',lw:2.5,d:[]},
-    {l:'Pet — moderado',c:'#f59e0b',lw:1.5,d:[6,4]},
-    {l:'Pet — sobrecarga',c:'#c62828',lw:1.5,d:[2,3]},
-    {l:'Pet — perdeu recentemente',c:'#9e9e9e',lw:1.5,d:[3,2,8,2]},
-  ];
-  legs.forEach(it=>{
+  secBar('5. Legenda','#444444');
+  const sub=t=>{ctx.font='bold 10.5px sans-serif';ctx.fillStyle=scol;ctx.textBaseline='top';ctx.textAlign='left';ctx.fillText(t,px,py);py+=15;};
+  const linha=it=>{
     ctx.strokeStyle=it.c;ctx.lineWidth=it.lw;ctx.setLineDash(it.d);
-    ctx.beginPath();ctx.moveTo(px,py+5);ctx.lineTo(px+28,py+5);ctx.stroke();
-    ctx.setLineDash([]);
-    ctx.font='9px sans-serif';ctx.fillStyle=tcol;ctx.textBaseline='middle';ctx.textAlign='left';
-    ctx.fillText(it.l,px+32,py+5);py+=14;
-  });
-  py+=8;
-  ctx.font='8px sans-serif';ctx.fillStyle=scol;ctx.textBaseline='top';
-  ctx.fillText('© Profa. Dra. Angelina Monteiro Furtado',px,py);py+=11;
-  ctx.fillText('Gerado em: '+new Date().toLocaleDateString('pt-BR'),px,py);
+    ctx.beginPath();ctx.moveTo(px,py+6);ctx.lineTo(px+32,py+6);ctx.stroke();ctx.setLineDash([]);
+    ctx.font='10px sans-serif';ctx.fillStyle=tcol;ctx.textBaseline='middle';ctx.textAlign='left';
+    ctx.fillText(it.l,px+38,py+6);py+=15;
+  };
+  sub('Distância do centro = frequência de contato (MMRI)');
+  ctx.font='10px sans-serif';ctx.fillStyle=tcol;ctx.textBaseline='top';
+  py=wrapText(ctx,'Círculo interno: semanal ou mais · intermediário: mensal · externo: ocasional. Vínculos rompidos e perdas ficam no círculo externo.',px,py,colW,13);
+  py+=4;
+  sub('Tipo de linha = qualidade do vínculo (Hartman)');
+  TIPOS.forEach(t=>linha({l:t,c:TCORES[t],lw:TLW[t],d:TDASH[t]}));
+  sub('Pet');
+  TIPO_PET.forEach(t=>linha({l:t,c:PCORES[t],lw:PLW[t],d:PDASH[t]}));
+  sub('Marcadores');
+  const mk=(desenho,txt)=>{desenho(px+16,py+7);ctx.font='10px sans-serif';ctx.fillStyle=tcol;ctx.textBaseline='middle';ctx.textAlign='left';ctx.fillText(txt,px+38,py+7);py+=18;};
+  mk((x,y)=>{ctx.beginPath();ctx.arc(x,y,7,0,Math.PI*2);ctx.fillStyle='#7c3aed';ctx.fill();ctx.fillStyle=white;ctx.font='bold 9px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('C',x,y+0.5);},'Cuidador(a) principal');
+  mk((x,y)=>{ctx.font='italic 10px sans-serif';ctx.fillStyle='#4f46e5';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('vídeo',x,y);},'Meio de contato não presencial');
+  mk((x,y)=>{ctx.beginPath();ctx.arc(x,y,7,0,Math.PI*2);ctx.strokeStyle='#9e9e9e';ctx.lineWidth=1.2;ctx.setLineDash([2,2]);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle=scol;ctx.font='bold 9px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('?',x,y+0.5);},'Frequência não informada');
+  py+=6;
+  ctx.font='10px sans-serif';ctx.fillStyle=scol;ctx.textBaseline='top';ctx.textAlign='left';
+  ctx.fillText('© Profa. Dra. Angelina Monteiro Furtado',px,py);py+=13;
+  ctx.fillText('Gerado em: '+new Date().toLocaleDateString('pt-BR'),px,py);py+=13;
+  return py;
+}
+
+function drawCanvas(escala){
+  const S=escala||Math.max(2,window.devicePixelRatio||1);
+  const {MW,CX,CY,R0,ANEIS,NR,RARCO,RLAB}=MAPA,PW=380;
+  const ivcf=calcIVCF(),risco=calcRisco(),dados=getData();
+  // mede o painel para ajustar a altura da imagem
+  const medir=document.createElement('canvas').getContext('2d');
+  const H=Math.max(860,Math.ceil(drawPanel(medir,MW+14,PW-28,dados,ivcf,risco)+16)),W=MW+PW;
+  const canvas=document.getElementById('eco-canvas');
+  canvas.width=W*S;canvas.height=H*S;
+  canvas.style.width=W+'px';canvas.style.height=H+'px';
+  const ctx=canvas.getContext('2d');
+  ctx.setTransform(S,0,0,S,0,0);
+  ctx.clearRect(0,0,W,H);
+
+  const tcol='#1a1a18',scol='#5a5957',bcol='#d4d2c8',white='#ffffff';
+  ctx.fillStyle=white;ctx.fillRect(0,0,MW,H);
+  ctx.fillStyle='#f7f6f2';ctx.fillRect(MW,0,PW,H);
+  ctx.strokeStyle=bcol;ctx.lineWidth=0.5;ctx.setLineDash([]);
+  ctx.beginPath();ctx.moveTo(MW,0);ctx.lineTo(MW,H);ctx.stroke();
+  drawPanel(ctx,MW+14,PW-28,dados,ivcf,risco);
 
   // ─ MAPA ─
-  const CX=MW/2,CY=MH/2+10,R1=74,R2=200,R3=308,N=SISTEMAS.length,sl=(2*Math.PI)/N;
-  [R1,R2,R3].forEach((r,ri)=>{
+  ctx.fillStyle=scol;ctx.font='11px sans-serif';ctx.textAlign='left';ctx.textBaseline='top';
+  ctx.fillText('Ecomapa da Pessoa Idosa  |  '+new Date().toLocaleDateString('pt-BR'),12,10);
+
+  const setores=layout(dados);
+  const pt=(r,a)=>[CX+r*Math.cos(a),CY+r*Math.sin(a)];
+
+  // círculos de frequência
+  ANEIS.forEach(r=>{
     ctx.beginPath();ctx.arc(CX,CY,r,0,Math.PI*2);
-    ctx.strokeStyle=bcol;ctx.lineWidth=ri===2?1:0.5;ctx.setLineDash(ri===2?[4,3]:[]);ctx.stroke();ctx.setLineDash([]);
+    ctx.strokeStyle='#c9c7bd';ctx.lineWidth=1;ctx.setLineDash([4,4]);ctx.stroke();ctx.setLineDash([]);
   });
-  ctx.fillStyle=scol;ctx.font='9px sans-serif';ctx.textAlign='left';ctx.textBaseline='middle';
-  ctx.fillText('Rede próxima',CX+R2+5,CY-5);ctx.fillText('Rede ampliada',CX+R3+5,CY-5);
+  // divisões dos setores, arcos coloridos e rótulos
+  setores.forEach(x=>{
+    const vazio=!x.s.vinculos.length;
+    const [ax,ay]=pt(R0+6,x.a0),[bx,by]=pt(RARCO,x.a0);
+    ctx.strokeStyle='#e4e2da';ctx.lineWidth=0.8;ctx.beginPath();ctx.moveTo(ax,ay);ctx.lineTo(bx,by);ctx.stroke();
+    ctx.beginPath();ctx.arc(CX,CY,RARCO,x.a0+0.02,x.a1-0.02);
+    ctx.strokeStyle=x.s.cor;ctx.globalAlpha=vazio?0.25:0.85;ctx.lineWidth=6;ctx.stroke();ctx.globalAlpha=1;
+    const [lx,ly]=pt(RLAB,x.meio);
+    ctx.globalAlpha=vazio?0.45:1;
+    ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.font='15px sans-serif';ctx.fillStyle=tcol;ctx.fillText(x.s.emoji,lx,ly-9);
+    ctx.font='bold 12px sans-serif';ctx.fillStyle=vazio?scol:x.s.cor;ctx.fillText(x.s.curto,lx,ly+9);
+    if(vazio){ctx.font='10px sans-serif';ctx.fillStyle=scol;ctx.fillText('sem vínculos',lx,ly+23);}
+    ctx.globalAlpha=1;
+  });
+  // rótulos dos círculos — na divisão de setor mais próxima da base
+  let aLab=setores[0].a0,best=9;
+  setores.forEach(x=>{const d=Math.abs(Math.atan2(Math.sin(x.a0-Math.PI/2),Math.cos(x.a0-Math.PI/2)));if(d<best){best=d;aLab=x.a0;}});
+  ['Semanal','Mensal','Ocasional'].forEach((t,k)=>{
+    const [x,y]=pt(ANEIS[k],aLab);
+    ctx.font='bold 10px sans-serif';const w=ctx.measureText(t).width+8;
+    ctx.fillStyle=white;ctx.fillRect(x-w/2,y-7,w,14);
+    ctx.fillStyle=scol;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(t,x,y);
+  });
 
-  ctx.fillStyle=scol;ctx.font='9px sans-serif';ctx.textAlign='left';ctx.textBaseline='top';
-  ctx.fillText('Ecomapa — Pessoa Idosa  |  '+new Date().toLocaleDateString('pt-BR'),8,6);
+  // linhas
+  setores.forEach(x=>{
+    const isPet=x.s.id==='pet';
+    x.s.vinculos.forEach(v=>{
+      const e=estiloLinha(v,isPet);
+      const [ax,ay]=pt(R0+3,v.ang),[bx,by]=pt(ANEIS[v.anel],v.ang);
+      ctx.strokeStyle=e.c;ctx.lineWidth=e.lw;ctx.setLineDash(e.d);
+      ctx.beginPath();ctx.moveTo(ax,ay);ctx.lineTo(bx,by);ctx.stroke();ctx.setLineDash([]);
+    });
+  });
 
-  ctx.beginPath();ctx.arc(CX,CY,R1,0,Math.PI*2);
+  // centro — pessoa idosa
+  ctx.beginPath();ctx.arc(CX,CY,R0,0,Math.PI*2);
   ctx.fillStyle='#ede9fe';ctx.fill();ctx.strokeStyle='#5c6bc0';ctx.lineWidth=2;ctx.stroke();
   const nome=document.getElementById('nome').value||'Pessoa Idosa';
   const idade=document.getElementById('idade').value;
   ctx.fillStyle=tcol;ctx.textAlign='center';ctx.textBaseline='middle';
-  ctx.font='bold 12px sans-serif';
-  ctx.fillText(nome.length>14?nome.substring(0,13)+'…':nome,CX,CY-(idade?9:0));
-  if(idade){ctx.font='9px sans-serif';ctx.fillStyle=scol;ctx.fillText(idade,CX,CY+9);}
+  ctx.font='bold 13px sans-serif';
+  ctx.fillText(nome.length>13?nome.substring(0,12)+'…':nome,CX,CY-(idade?9:0));
+  if(idade){ctx.font='11px sans-serif';ctx.fillStyle=scol;ctx.fillText(idade.length>14?idade.substring(0,13)+'…':idade,CX,CY+10);}
+  const badge=(bx,by,cor,txt)=>{ctx.beginPath();ctx.arc(bx,by,10,0,Math.PI*2);ctx.fillStyle=cor;ctx.fill();
+    ctx.fillStyle=white;ctx.font='bold 10px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(txt,bx,by+0.5);};
+  badge(CX+R0*0.72,CY-R0*0.72,ivcf.cor,ivcf.pts);
+  if(risco.pts>0)badge(CX-R0*0.72,CY-R0*0.72,risco.cor,'!');
 
-  ctx.beginPath();ctx.arc(CX+R1-5,CY-R1+5,8,0,Math.PI*2);
-  ctx.fillStyle=ivcf.cor;ctx.fill();
-  ctx.fillStyle=white;ctx.font='bold 8px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
-  ctx.fillText(ivcf.pts,CX+R1-5,CY-R1+5);
-
-  if(risco.pts>0){
-    ctx.beginPath();ctx.arc(CX-R1+5,CY-R1+5,8,0,Math.PI*2);
-    ctx.fillStyle=risco.cor;ctx.fill();
-    ctx.fillStyle=white;ctx.font='bold 9px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
-    ctx.fillText('!',CX-R1+5,CY-R1+5);
-  }
-
-  dados.forEach((s,i)=>{
-    const angle=sl*i-Math.PI/2,nx=CX+R2*Math.cos(angle),ny=CY+R2*Math.sin(angle);
-    const nv=s.vinculos.length,maxH=Math.min(sl*0.36,0.25);
-    s.vinculos.forEach((v,vi)=>{
-      const sp=nv>1?((vi/(nv-1))-0.5)*2*maxH:0,va=angle+sp;
-      const rE=R3+18+(nv>2?nv*8:0),ex=CX+rE*Math.cos(va),ey=CY+rE*Math.sin(va);
-      const tipo=v.tipo||'',isPet=s.id==='pet';
-      const corV=isPet?(PCORES[tipo]||'#d97706'):(TCORES[tipo]||'#9e9e9e');
-      const dashV=isPet?(PDASH[tipo]||[]):(TDASH[tipo]||[]);
-      const lwV=isPet?(PLW[tipo]||1.5):(TLW[tipo]||1);
-      ctx.strokeStyle=corV;ctx.lineWidth=lwV;ctx.setLineDash(dashV);
-      ctx.beginPath();ctx.moveTo(CX+(R1+5)*Math.cos(angle),CY+(R1+5)*Math.sin(angle));ctx.lineTo(ex,ey);ctx.stroke();
-      ctx.setLineDash([]);
-      const nR=(v.parentesco||v.tipoAnimal)?27:20;
-      ctx.beginPath();ctx.arc(ex,ey,nR,0,Math.PI*2);
-      ctx.fillStyle='#fafafa';ctx.fill();ctx.strokeStyle=corV;ctx.lineWidth=1.5;ctx.stroke();
+  // nós
+  setores.forEach(x=>{
+    const isPet=x.s.id==='pet';
+    x.s.vinculos.forEach(v=>{
+      const e=estiloLinha(v,isPet);
+      const [ex,ey]=pt(ANEIS[v.anel],v.ang);
+      if(v.cp){ctx.beginPath();ctx.arc(ex,ey,NR+4,0,Math.PI*2);ctx.strokeStyle='#7c3aed';ctx.lineWidth=2.5;ctx.stroke();}
+      ctx.beginPath();ctx.arc(ex,ey,NR,0,Math.PI*2);
+      ctx.fillStyle='#fafafa';ctx.fill();
+      ctx.strokeStyle=e.c;ctx.lineWidth=1.5;ctx.setLineDash(v.semFreq?[3,3]:[]);ctx.stroke();ctx.setLineDash([]);
       ctx.textAlign='center';ctx.textBaseline='middle';
-      if(v.parentesco||v.tipoAnimal){
-        const sub=v.parentesco||v.tipoAnimal||'';
-        ctx.font='7px sans-serif';ctx.fillStyle=scol;
-        ctx.fillText(sub.length>11?sub.substring(0,10)+'…':sub,ex,ey-7);
-        ctx.font='8px sans-serif';ctx.fillStyle=tcol;
-        ctx.fillText(v.nome.length>11?v.nome.substring(0,10)+'…':v.nome,ex,ey+5);
+      const maxW=2*NR-6;
+      // ajusta o texto ao nó: reduz a fonte até 9px e, se preciso, abrevia
+      const caber=(t,peso,tam)=>{
+        let f=tam;ctx.font=`${peso}${f}px sans-serif`;
+        while(ctx.measureText(t).width>maxW&&f>9){f-=0.5;ctx.font=`${peso}${f}px sans-serif`;}
+        if(ctx.measureText(t).width<=maxW)return t;
+        while(t.length>1&&ctx.measureText(t+'…').width>maxW)t=t.slice(0,-1);
+        return t+'…';
+      };
+      if(v.sub){
+        const sb=caber(curto(v.sub),'',10);ctx.fillStyle=v.sub.startsWith('Saúde mental')?'#0891b2':scol;ctx.fillText(sb,ex,ey-8);
+        const nm=caber(v.nome,'bold ',11);ctx.fillStyle=tcol;ctx.fillText(nm,ex,ey+7);
       }else{
-        ctx.font='8px sans-serif';ctx.fillStyle=tcol;
-        ctx.fillText(v.nome.length>12?v.nome.substring(0,11)+'…':v.nome,ex,ey);
+        const nm=caber(v.nome,'bold ',11);ctx.fillStyle=tcol;ctx.fillText(nm,ex,ey);
+      }
+      if(v.cp)badge(ex+NR*0.75,ey-NR*0.75,'#7c3aed','C');
+      if(v.semFreq){
+        ctx.beginPath();ctx.arc(ex-NR*0.75,ey-NR*0.75,8,0,Math.PI*2);ctx.fillStyle=white;ctx.fill();
+        ctx.strokeStyle='#9e9e9e';ctx.lineWidth=1;ctx.stroke();
+        ctx.fillStyle=scol;ctx.font='bold 10px sans-serif';ctx.fillText('?',ex-NR*0.75,ey-NR*0.75+0.5);
+      }
+      const tag=MEIO_TAG[v.meio];
+      if(tag){
+        ctx.font='italic 10px sans-serif';const tw=ctx.measureText(tag).width+6;
+        const ty=ey+NR+9;
+        ctx.fillStyle='rgba(255,255,255,0.9)';ctx.fillRect(ex-tw/2,ty-6,tw,12);
+        ctx.fillStyle='#4f46e5';ctx.textBaseline='middle';ctx.fillText(tag,ex,ty);
       }
     });
-    ctx.beginPath();ctx.arc(nx,ny,26,0,Math.PI*2);
-    ctx.fillStyle=s.cor+'28';ctx.fill();ctx.strokeStyle=s.cor;ctx.lineWidth=1.5;ctx.setLineDash([]);ctx.stroke();
-    ctx.font='14px sans-serif';ctx.fillStyle=tcol;ctx.textAlign='center';ctx.textBaseline='middle';
-    ctx.fillText(s.emoji,nx,ny-6);ctx.font='8px sans-serif';ctx.fillStyle=scol;ctx.fillText(s.label.split(' ')[0],nx,ny+10);
   });
 }
 
-// ═══ EXPORT ═══════════════════════════════════
-function doDownloadPNG(){
-  drawCanvas();
+// ═══ EXPORT ═══
+function exportPNG(escala,nomeArquivo){
+  drawCanvas(escala);
   document.getElementById('eco-canvas').toBlob(blob=>{
     const url=URL.createObjectURL(blob),a=document.createElement('a');
-    a.href=url;a.download='ecomapa_idoso.png';document.body.appendChild(a);a.click();
-    setTimeout(()=>{URL.revokeObjectURL(url);a.remove();},1500);
+    a.href=url;a.download=nomeArquivo;document.body.appendChild(a);a.click();
+    // restaura resolução normal após o download
+    setTimeout(()=>{URL.revokeObjectURL(url);a.remove();drawCanvas();},1500);
   },'image/png');
 }
+
+// PNG padrão (escala 4x — boa para Word e apresentações)
+function doDownloadPNG(){ exportPNG(4,'ecomapa_idoso.png'); }
+
+// Alta resolução (escala 6x — ideal para artigos científicos e publicações)
+function doDownloadAltaRes(){ exportPNG(6,'ecomapa_idoso_alta_resolucao.png'); }
+
 function doImprimir(){
-  drawCanvas();
+  drawCanvas(4);
   const dataURL=document.getElementById('eco-canvas').toDataURL('image/png');
   const html=`<!DOCTYPE html><html><head><title>Ecomapa</title>
     <style>*{margin:0;padding:0}body{background:#fff}img{width:100%;display:block}
@@ -538,10 +678,10 @@ function doImprimir(){
     <body><img src="${dataURL}" onload="window.print()"/></body></html>`;
   const blob=new Blob([html],{type:'text/html'}),url=URL.createObjectURL(blob),a=document.createElement('a');
   a.href=url;a.target='_blank';document.body.appendChild(a);a.click();
-  setTimeout(()=>{URL.revokeObjectURL(url);a.remove();},1500);
+  setTimeout(()=>{URL.revokeObjectURL(url);a.remove();drawCanvas();},1500);
 }
 
-// ═══ NAVEGAÇÃO ════════════════════════════════
+// ═══ NAVEGAÇÃO ═══
 function showTab(t){
   const names=['dados','ivcf','sistemas','risco','mapa'];
   document.querySelectorAll('.tab').forEach((b,i)=>b.classList.toggle('active',names[i]===t));
@@ -550,7 +690,7 @@ function showTab(t){
   if(t==='mapa'){buildResumo();drawCanvas();}
 }
 
-// ═══ INIT ═════════════════════════════════════
+// ═══ INIT ═══
 buildIVCF();buildRisco();buildSistemas();
 </script>
 </body>
